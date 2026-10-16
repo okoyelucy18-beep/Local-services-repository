@@ -1,5 +1,8 @@
+
 from django.apps import AppConfig
 
 
-class FindYrConfig(AppConfig):
-    name = 'Find_YR'
+class HandymanConfig(AppConfig):
+    default_auto_field = 'django.db.models.BigAutoField'
+    name = 'Handyman'
+    label = 'handyman'

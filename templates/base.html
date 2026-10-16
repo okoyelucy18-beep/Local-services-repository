@@ -1,0 +1,29 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover trusted local service providers near you.">
+    <title>{% block title %}LocalConnect{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header class="navbar">
+        <a class="logo" href="{% url 'home' %}">Local<span>Connect</span></a>
+        <nav>
+            <a href="{% url 'home' %}">Explore Services</a>
+            <a href="/admin/">Admin</a>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+        <p>&copy; {% now "Y" %} LocalConnect. Connecting people with local services.</p>
+    </footer>
+</body>
+</html>

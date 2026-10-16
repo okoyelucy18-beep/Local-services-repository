@@ -1,0 +1,54 @@
+
+{% extends "base.html" %}
+
+{% block title %}{{ provider.name }} | LocalConnect{% endblock %}
+
+{% block content %}
+<section class="detail-section">
+    <a class="back-link" href="{% url 'home' %}">
+        ← Back to directory
+    </a>
+
+    <article class="detail-card">
+        {% if provider.image %}
+            <img
+                class="detail-image"
+                src="{{ provider.image.url }}"
+                alt="{{ provider.name }}"
+            >
+        {% endif %}
+
+        <p class="eyebrow">{{ provider.category.name }}</p>
+        <h1>{{ provider.name }}</h1>
+
+        {% if provider.is_verified %}
+            <p class="verified">✓ Verified provider</p>
+        {% endif %}
+
+        <p class="detail-description">{{ provider.description }}</p>
+
+        <h2>Business information</h2>
+        <p><strong>Location:</strong> {{ provider.address }}, {{ provider.city }}</p>
+        <p><strong>Phone:</strong> {{ provider.phone }}</p>
+
+        {% if provider.email %}
+            <p><strong>Email:</strong> {{ provider.email }}</p>
+        {% endif %}
+
+        {% if provider.website %}
+            <p>
+                <strong>Website:</strong>
+                <a href="{{ provider.website }}" target="_blank"
+                   rel="noopener noreferrer">
+                    Visit website
+                </a>
+            </p>
+        {% endif %}
+
+        <a class="primary-button"
+           href="tel:{{ provider.phone }}">
+            Call this provider
+        </a>
+    </article>
+</section>
+{% endblock %}

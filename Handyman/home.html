@@ -1,0 +1,118 @@
+
+{% extends "base.html" %}
+
+{% block title %}Find Local Services | LocalConnect{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="hero-content">
+        <p class="eyebrow">YOUR COMMUNITY, CONNECTED</p>
+        <h1>Find the right people<br>for the job.</h1>
+        <p class="hero-text">
+            Discover local professionals and businesses
+            ready to help you get things done.
+        </p>
+
+        <form method="get" class="search-form">
+            <input
+                type="search"
+                name="q"
+                placeholder="What service do you need?"
+                value="{{ query }}"
+                aria-label="Search services"
+            >
+            <input
+                type="text"
+                name="city"
+                placeholder="City or town"
+                value="{{ city }}"
+                aria-label="Filter by city"
+            >
+            <button type="submit">Search</button>
+        </form>
+    </div>
+</section>
+
+<section class="directory section">
+    <div class="section-heading">
+        <div>
+            <p class="eyebrow">DISCOVER LOCAL TALENT</p>
+            <h2>Explore services</h2>
+        </div>
+        <p class="results-count">
+            {{ providers|length }} result{{ providers|length|pluralize }}
+        </p>
+    </div>
+
+    <form method="get" class="filters">
+        <input type="hidden" name="q" value="{{ query }}">
+        <input type="hidden" name="city" value="{{ city }}">
+
+        <label for="category">Category</label>
+        <select id="category" name="category">
+            <option value="">All categories</option>
+            {% for category in categories %}
+                <option
+                    value="{{ category.id }}"
+                    {% if selected_category == category.id|stringformat:"s" %}selected{% endif %}
+                >
+                    {{ category.name }}
+                </option>
+            {% endfor %}
+        </select>
+
+        <button class="secondary-button" type="submit">
+            Apply filter
+        </button>
+        <a class="reset-link" href="{% url 'home' %}">Clear filters</a>
+    </form>
+
+    <div class="service-grid">
+        {% for provider in providers %}
+            <article class="service-card">
+                {% if provider.image %}
+                    <img
+                        class="provider-image"
+                        src="{{ provider.image.url }}"
+                        alt="{{ provider.name }}"
+                    >
+                {% else %}
+                    <div class="image-placeholder">
+                        {{ provider.name|first|upper }}
+                    </div>
+                {% endif %}
+
+                <div class="card-content">
+                    <div class="card-topline">
+                        <span class="category-tag">
+                            {{ provider.category.name }}
+                        </span>
+                        {% if provider.is_verified %}
+                            <span class="verified">✓ Verified</span>
+                        {% endif %}
+                    </div>
+
+                    <h3>{{ provider.name }}</h3>
+                    <p class="location">⌖ {{ provider.city }}</p>
+                    <p class="description">
+                        {{ provider.description|truncatewords:22 }}
+                    </p>
+
+                    <a
+                        class="card-link"
+                        href="{{ provider.get_absolute_url }}"
+                    >
+                        View business <span>→</span>
+                    </a>
+                </div>
+            </article>
+        {% empty %}
+            <div class="empty-state">
+                <h3>No services found</h3>
+                <p>Try another keyword, category, or location.</p>
+                <a href="{% url 'home' %}">View all services</a>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
