@@ -9,4 +9,8 @@ urlpatterns = [
         views.provider_detail,
         name="provider_detail",
     ),
+    path(
+        "register/",
+        views.register_provider,
+        name="provider_register",),
 ]

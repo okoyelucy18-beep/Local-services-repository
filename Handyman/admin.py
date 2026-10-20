@@ -3,12 +3,27 @@ from django.contrib import admin
 from .models import Category, ServiceProvider
 
 
+# 1. Create an inline manager for the child categories
+class ChildCategoryInline(admin.TabularInline):
+    model = Category
+    # 'children' comes from the related_name='children' in your models.py ForeignKey
+    fk_name = 'parent' 
+    extra = 1  # Shows 1 empty row by default to quickly add a new child
+    prepopulated_fields = {'slug': ('name',)}
+
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ("name", "slug")
+    list_display = ("name", "parent", "slug")
+      
+    # Sidebar filters to easily narrow down categories
+    list_filter = ('parent',)
     prepopulated_fields = {"slug": ("name",)}
-    search_fields = ("name",)
+    search_fields = ("name", "slug") 
+    autocomplete_fields = ("parent",)
 
+
+    # Inline manager for child categories
+    inlines = [ChildCategoryInline]
 
 @admin.register(ServiceProvider)
 class ServiceProviderAdmin(admin.ModelAdmin):
