@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Business Dashboard | LocalConnect{% endblock %}
+{% block meta_description %}Manage your submitted business listings, review their status, and keep your LocalConnect profile up to date.{% endblock %}
+
+{% block content %}
+<section class="auth-page dashboard-page">
+    <div class="auth-card dashboard-card">
+        <div class="auth-heading">
+            <span class="auth-eyebrow">BUSINESS DASHBOARD</span>
+            <h1>My Listings</h1>
+            <p>Track your submitted businesses and see whether they are pending or approved.</p>
+        </div>
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="auth-message">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+
+        {% if providers %}
+            <div class="dashboard-list">
+                {% for provider in providers %}
+                    <article class="dashboard-item">
+                        <div>
+                            <h3>{{ provider.name }}</h3>
+                            <p>{{ provider.category.name }} • {{ provider.city }}, {{ provider.state }}</p>
+                        </div>
+                        <div class="dashboard-meta">
+                            <span class="status-badge status-{{ provider.status }}">{{ provider.status|title }}</span>
+                            <a href="{% url 'provider_detail' provider.pk %}" class="secondary-button">View</a>
+                        </div>
+                    </article>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="empty-state">
+                <h3>No listings yet</h3>
+                <p>You have not submitted any businesses for review.</p>
+                <a href="{% url 'provider_register' %}">Add your business</a>
+            </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

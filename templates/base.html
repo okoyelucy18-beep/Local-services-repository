@@ -1,29 +1,104 @@
-
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Discover trusted local service providers near you.">
-    <title>{% block title %}LocalConnect{% endblock %}</title>
+    <meta name="description" content="{% block meta_description %}Discover trusted local service providers near you with LocalConnect.{% endblock %}">
+    <meta name="theme-color" content="#0f766e">
+
+    <title>{% block title %}LocalConnect | Find Trusted Local Services{% endblock %}</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="{% static 'images/favicon.svg' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% block extra_css %}{% endblock %}
 </head>
+
 <body>
-    <header class="navbar">
-        <a class="logo" href="{% url 'home' %}">Local<span>Connect</span></a>
-        <nav>
-            <a href="{% url 'home' %}">Explore Services</a>
-            <a href="{% url 'admin:index' %}">Admin</a>
-        </nav>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <!-- NAVIGATION -->
+    <header class="site-navbar">
+        <div class="navbar-inner">
+            <a class="logo" href="{% url 'home' %}" aria-label="LocalConnect homepage">
+                <img src="{% static 'images/localconnect-logo.svg' %}" alt="LocalConnect logo" class="brand-logo-header">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+                aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainNav">
+                <nav class="nav-links" aria-label="Main navigation">
+                    <a href="{% url 'home' %}" class="nav-link">Home</a>
+                    <a href="{% url 'explore_services' %}" class="nav-link">Explore Services</a>
+
+                    {% if user.is_authenticated %}
+                        <span class="nav-user">
+                            Hi, {{ user.username }}
+                        </span>
+                        <a href="{% url 'dashboard' %}" class="nav-link">Business Dashboard</a>
+                        <form method="post" action="{% url 'logout' %}" class="logout-form">
+                            {% csrf_token %}
+                            <button type="submit" class="logout-button">Log Out</button>
+                        </form>
+                        <a href="{% url 'provider_register' %}" class="nav-cta nav-link">
+                            List Your Business
+                        </a>
+                    {% else %}
+                        <a href="{% url 'login' %}?next={% url 'provider_register' %}" class="nav-link">Log In</a>
+                        <a href="{% url 'signup' %}?next={% url 'provider_register' %}" class="nav-link">Sign Up</a>
+                        <a href="{% url 'login' %}?next={% url 'provider_register' %}" class="nav-cta nav-link">
+                            List Your Business
+                        </a>
+                    {% endif %}
+                </nav>
+            </div>
+        </div>
     </header>
 
-    <main>
+    <!-- PAGE CONTENT -->
+    <main id="main-content">
+        {% if messages %}
+            <div class="container mt-3">
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags|default:'info' }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
         {% block content %}{% endblock %}
     </main>
 
+    <!-- FOOTER -->
     <footer class="footer">
-        <p>&copy; {% now "Y" %} LocalConnect. Connecting people with local services.</p>
+        <div class="footer-inner">
+            <div>
+                <a class="logo footer-logo" href="{% url 'home' %}">
+                    <img src="{% static 'images/localconnect-logo.svg' %}" alt="LocalConnect logo" class="brand-logo-footer">
+                </a>
+                <p>Connecting people with trusted local services.</p>
+            </div>
+
+            <div class="footer-links" aria-label="Footer links">
+                <a href="{% url 'explore_services' %}">Explore Services</a>
+                <a href="{% url 'provider_register' %}">List Your Business</a>
+                <a href="{% url 'login' %}">Login</a>
+            </div>
+
+            <p class="footer-copy">
+                &copy; {% now "Y" %} LocalConnect. All rights reserved.
+            </p>
+        </div>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

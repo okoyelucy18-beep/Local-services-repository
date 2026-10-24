@@ -2,6 +2,7 @@
 {% extends "base.html" %}
 
 {% block title %}{{ provider.name }} | LocalConnect{% endblock %}
+{% block meta_description %}Learn more about {{ provider.name }}, a trusted {{ provider.category.name|lower }} service in {{ provider.city }}, {{ provider.state }}. View contact details, location, and customer reviews.{% endblock %}
 
 {% block content %}
 <section class="detail-section">
@@ -25,6 +26,16 @@
             <p class="verified">✓ Verified provider</p>
         {% endif %}
 
+        <p class="detail-rating">
+            <strong>Rating:</strong>
+            {% if review_count %}
+                {{ average_rating|floatformat:1 }} / 5.0
+                <span class="rating-count">({{ review_count }} review{{ review_count|pluralize }})</span>
+            {% else %}
+                No reviews yet.
+            {% endif %}
+        </p>
+
         <p class="detail-description">{{ provider.description }}</p>
 
         <h2>Business information</h2>
@@ -45,10 +56,45 @@
             </p>
         {% endif %}
 
-        <a class="primary-button"
-           href="tel:{{ provider.phone }}">
-            Call this provider
-        </a>
+        <div class="detail-actions">
+            <a class="primary-button" href="tel:{{ provider.phone }}">
+                Call this provider
+            </a>
+        </div>
+
+        <section class="reviews-section">
+            <h2>Customer reviews</h2>
+
+            {% if user.is_authenticated %}
+                <form method="post" action="{% url 'add_review' provider.pk %}" class="review-form">
+                    {% csrf_token %}
+                    {{ review_form.as_p }}
+                    <button type="submit" class="primary-button">Submit review</button>
+                </form>
+            {% else %}
+                <p class="review-login-prompt">
+                    <a href="{% url 'login' %}?next={{ request.path }}">Log in</a>
+                    to leave a review.
+                </p>
+            {% endif %}
+
+            {% if reviews %}
+                {% for review in reviews %}
+                    <article class="review-item">
+                        <div class="review-head">
+                            <strong>{{ review.user.username }}</strong>
+                            <span>{{ review.rating }}/5</span>
+                        </div>
+                        <p class="review-date">{{ review.created_at|date:"M d, Y" }}</p>
+                        {% if review.comment %}
+                            <p>{{ review.comment }}</p>
+                        {% endif %}
+                    </article>
+                {% endfor %}
+            {% else %}
+                <p class="empty-reviews">No reviews yet. Be the first to review this business.</p>
+            {% endif %}
+        </section>
     </article>
 </section>
 {% endblock %}

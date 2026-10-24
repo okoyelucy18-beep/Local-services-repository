@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}Explore Services | LocalConnect{% endblock %}
+{% block meta_description %}Browse trusted local businesses and service providers near you. Find verified professionals for home services, repairs, beauty, wellness, and more on LocalConnect.{% endblock %}
+
+{% block content %}
+<section class="directory section">
+    <div class="section-heading">
+        <div>
+            <p class="eyebrow">DISCOVER LOCAL TALENT</p>
+            <h1>Explore Services</h1>
+        </div>
+        <p class="results-count">
+            {{ providers|length }} result{{ providers|length|pluralize }}
+        </p>
+    </div>
+
+    <form method="get" class="filters">       
+        <label for="category">Category</label>
+        <select id="category" name="category">
+            <option value="">All categories</option>
+            {% for category in categories %}
+                <option value="{{ category.id }}"{% if selected_category == category.id|stringformat:"s" %} selected{% endif %}>
+                    {{ category.name }}
+                </option>
+            {% endfor %}
+        </select>
+        <button class="secondary-button" type="submit">Search services</button>
+        <a class="reset-link" href="{% url 'explore_services' %}">Clear filters</a>
+    </form>
+
+    <div class="service-grid">
+        {% for provider in providers %}
+            <article class="service-card">
+                {% if provider.image %}
+                    <img class="provider-image" src="{{ provider.image.url }}" alt="{{ provider.name }}">
+                {% else %}
+                    <div class="image-placeholder">{{ provider.name|first|upper }}</div>
+                {% endif %}
+
+                <div class="card-content">
+                    <div class="card-topline">
+                        <span class="category-tag">{{ provider.category }}</span>
+                        {% if provider.is_verified %}
+                            <span class="verified">✓ Verified</span>
+                        {% endif %}
+                    </div>
+                    <h2>{{ provider.name }}</h2>
+                    <p class="location">
+                        ⌖ {{ provider.neighborhood }}{% if provider.neighborhood %}, {% endif %}{{ provider.city }}, {{ provider.state }}
+                    </p>
+                    <p class="description">{{ provider.description|truncatewords:22 }}</p>
+                    <a class="card-link" href="{{ provider.get_absolute_url }}">
+                        View business <span>→</span>
+                    </a>
+                </div>
+            </article>
+        {% empty %}
+            <div class="empty-state">
+                <h3>No services found</h3>
+                <p>Try another keyword, category, or location.</p>
+                <a href="{% url 'explore_services' %}">View all services</a>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}Create Account | LocalConnect{% endblock %}
+{% block meta_description %}Create a LocalConnect account to discover trusted local services or list your business and grow your customer reach.{% endblock %}
+
+{% block content %}
+<section class="auth-page">
+    <div class="auth-card">
+        <div class="auth-heading">
+            <span class="auth-eyebrow">JOIN LOCALCONNECT</span>
+            <h1>Create Your Account</h1>
+            <p>
+                Join LocalConnect to get started with your local service
+                directory account.
+            </p>
+        </div>
+
+        <form method="post" class="auth-form">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ next|default:'provider_register' }}">
+
+            {% if form.non_field_errors %}
+                <div class="auth-message" role="alert">
+                    {{ form.non_field_errors }}
+                </div>
+            {% endif %}
+
+            {% for field in form %}
+                <p>
+                    <label for="{{ field.id_for_label }}">
+                        {{ field.label }}
+                    </label>
+
+                    {{ field }}
+
+                    {% if field.help_text %}
+                        <span class="helptext">{{ field.help_text|safe }}</span>
+                    {% endif %}
+
+                    {% for error in field.errors %}
+                        <span class="errorlist">{{ error }}</span>
+                    {% endfor %}
+                </p>
+            {% endfor %}
+
+            <button type="submit" class="auth-submit">
+                Create Account
+            </button>
+        </form>
+
+        <p class="auth-footer-text">
+            Already registered?
+            <a href="{% url 'login' %}">Log in</a>
+        </p>
+    </div>
+</section>
+{% endblock %}

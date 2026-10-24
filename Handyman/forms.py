@@ -1,6 +1,17 @@
 
 from django import forms
-from .models import ServiceProvider
+
+from .models import Review, ServiceProvider
+
+
+class ReviewForm(forms.ModelForm):
+    class Meta:
+        model = Review
+        fields = ['rating', 'comment']
+        widgets = {
+            'rating': forms.Select(choices=[(i, f'{i} star') for i in range(5, 0, -1)]),
+            'comment': forms.Textarea(attrs={'rows': 4, 'placeholder': 'Share your experience with this business.'}),
+        }
 
 
 class ServiceProviderRegistrationForm(forms.ModelForm):

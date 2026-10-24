@@ -1,0 +1,33 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">LocalConnect icon</title>
+  <desc id="desc">A teal location pin with a roof and handshake symbol.</desc>
+  <defs>
+    <linearGradient id="pinGrad" x1="0" x2="1">
+      <stop offset="0%" stop-color="#0bb5a6"/>
+      <stop offset="100%" stop-color="#0a8da0"/>
+    </linearGradient>
+    <linearGradient id="roofGrad" x1="0" x2="1">
+      <stop offset="0%" stop-color="#0f3f5d"/>
+      <stop offset="100%" stop-color="#0a2d42"/>
+    </linearGradient>
+    <linearGradient id="handGrad" x1="0" x2="1">
+      <stop offset="0%" stop-color="#0c2f48"/>
+      <stop offset="100%" stop-color="#143d5d"/>
+    </linearGradient>
+  </defs>
+
+  <path d="M256 36c-120 0-220 97-220 216 0 149 220 260 220 260s220-111 220-260C476 133 376 36 256 36Z" fill="url(#pinGrad)"/>
+  <path d="M256 92c-83 0-150 67-150 149 0 104 150 183 150 183s150-79 150-183c0-82-67-149-150-149Z" fill="#0d7d82" opacity="0.22"/>
+
+  <path d="M150 170 256 76l106 94h-52V262H202V170h-52Z" fill="url(#roofGrad)"/>
+  <rect x="186" y="180" width="140" height="118" rx="10" fill="#f8fbff" opacity="0.94"/>
+  <rect x="208" y="200" width="36" height="36" rx="5" fill="#0c3d58"/>
+  <rect x="264" y="200" width="36" height="36" rx="5" fill="#0c3d58"/>
+  <rect x="208" y="250" width="36" height="36" rx="5" fill="#0c3d58"/>
+  <rect x="264" y="250" width="36" height="36" rx="5" fill="#0c3d58"/>
+
+  <path d="M136 296c18-38 45-67 82-74 17-4 33-4 49 3l11 7c11 7 19 17 22 29l12 54c5 21-4 42-22 55l-36 26c-17 12-38 18-60 18h-32c-26 0-47-21-47-48l-5-27c-2-13 6-25 18-28l10-4c13-5 25-11 36-20Z" fill="url(#handGrad)" opacity="0.98"/>
+  <path d="M278 248c17-19 45-25 70-15 18 8 31 25 34 44l5 31c2 14-5 27-19 31l-14 4c-18 6-36 18-47 34l-19 27c-8 11-22 18-36 18h-23c-17 0-30-14-30-30v-28c0-22 14-41 35-47l34-12c16-6 32-15 40-29l5-12c3-7 10-12 18-12h14c8 0 16 5 20 13Z" fill="#13b8a5"/>
+  <path d="M374 288c14-6 32-6 46 1l58 35c14 9 24 23 27 39l9 52c3 18-7 36-24 43l-52 22c-8 3-17 5-26 5h-35c-18 0-34-12-39-30l-18-66c-5-18 0-38 15-51l50-37c8-6 18-10 29-13Z" fill="#13b8a5"/>
+  <path d="M274 346c9 3 18 10 24 18l9 13 29 36c13 16 35 23 54 17l20-6c14-4 25-16 27-30l6-37c2-13-1-27-11-37l-32-32c-9-9-22-14-35-14h-29c-18 0-35 11-43 28l-22 45c-7 14-4 31 7 42Z" fill="url(#handGrad)"/>
+</svg>

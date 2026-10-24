@@ -1,126 +1,52 @@
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register Your Business | Local Service Directory</title>
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+{% extends "base.html" %}
 
-        body {
-            margin: 0;
-            padding: 32px 16px;
-            font-family: Arial, sans-serif;
-            background: #f3f6fa;
-            color: #1f2937;
-        }
+{% block title %}Register Your Business | LocalConnect{% endblock %}
+{% block meta_description %}List your business on LocalConnect and connect with local customers looking for trusted professionals in their area.{% endblock %}
 
-        .container {
-            max-width: 720px;
-            margin: 0 auto;
-            padding: 32px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-        }
-
-        h1 {
-            margin-top: 0;
-            color: #12345a;
-        }
-
-        .intro {
-            color: #64748b;
-            line-height: 1.6;
-        }
-
-        .messages {
-            padding: 12px;
-            margin-bottom: 20px;
-            background: #dcfce7;
-            color: #166534;
-            border-radius: 6px;
-        }
-
-        form p {
-            margin-bottom: 18px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 7px;
-            font-weight: bold;
-        }
-
-        input, select, textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #cbd5e1;
-            border-radius: 6px;
-            font: inherit;
-        }
-
-        input:focus, select:focus, textarea:focus {
-            outline: 2px solid #2563eb;
-            border-color: #2563eb;
-        }
-
-        .helptext {
-            display: block;
-            margin-top: 5px;
-            color: #64748b;
-            font-size: 13px;
-        }
-
-        .errorlist {
-            color: #b91c1c;
-        }
-
-        button {
-            width: 100%;
-            padding: 14px;
-            border: 0;
-            border-radius: 6px;
-            background: #2563eb;
-            color: white;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background: #1d4ed8;
-        }
-
-        @media (max-width: 500px) {
-            .container {
-                padding: 22px;
-            }
-        }
-    </style>
-</head>
-<body>
-    <main class="container">
-        <h1>Register Your Business</h1>
-        <p class="intro">
-            List your business in our local service directory.
-            Submit your details below for administrator review.
-        </p>
+{% block content %}
+<section class="auth-page">
+    <div class="auth-card register-card">
+        <div class="auth-heading">
+            <span class="auth-eyebrow">GROW YOUR BUSINESS</span>
+            <h1>Register Your Business</h1>
+            <p>
+                Connect with local customers by listing your services
+                on LocalConnect. Submit your details for review.
+            </p>
+        </div>
 
         {% if messages %}
             {% for message in messages %}
-                <div class="messages">{{ message }}</div>
+                <div class="auth-message">{{ message }}</div>
             {% endfor %}
         {% endif %}
 
-        <form method="post" enctype="multipart/form-data">
+        <form method="post" enctype="multipart/form-data" class="auth-form">
             {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Submit Business Listing</button>
+
+            {% for field in form %}
+                <p>
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {{ field }}
+                    {% if field.help_text %}
+                        <span class="helptext">{{ field.help_text|safe }}</span>
+                    {% endif %}
+                    {% for error in field.errors %}
+                        <span class="errorlist">{{ error }}</span>
+                    {% endfor %}
+                </p>
+            {% endfor %}
+
+            <button type="submit" class="auth-submit">
+                Submit Business Listing
+            </button>
         </form>
-    </main>
-</body>
-</html>
+
+        <p class="auth-footer-text">
+            Already have an account?
+            <a href="{% url 'login' %}">Log in</a>
+        </p>
+    </div>
+</section>
+{% endblock %}

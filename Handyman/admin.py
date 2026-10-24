@@ -1,6 +1,7 @@
 
 from django.contrib import admin
-from .models import Category, ServiceProvider
+
+from .models import Category, Review, ServiceProvider
 
 
 # 1. Create an inline manager for the child categories
@@ -21,9 +22,15 @@ class CategoryAdmin(admin.ModelAdmin):
     search_fields = ("name", "slug") 
     autocomplete_fields = ("parent",)
 
-
-    # Inline manager for child categories
+   # Inline manager for child categories
     inlines = [ChildCategoryInline]
+
+@admin.register(Review)
+class ReviewAdmin(admin.ModelAdmin):
+    list_display = ('provider', 'user', 'rating', 'created_at')
+    list_filter = ('rating', 'provider')
+    search_fields = ('comment', 'provider__name', 'user__username')
+
 
 @admin.register(ServiceProvider)
 class ServiceProviderAdmin(admin.ModelAdmin):

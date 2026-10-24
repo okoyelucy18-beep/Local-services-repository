@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Review Queue | LocalConnect{% endblock %}
+{% block meta_description %}Review and approve business submissions before they appear in the public directory.{% endblock %}
+
+{% block content %}
+<section class="auth-page dashboard-page">
+    <div class="auth-card dashboard-card">
+        <div class="auth-heading">
+            <span class="auth-eyebrow">MODERATION</span>
+            <h1>Review Queue</h1>
+            <p>Approve or reject new business listings before they go live.</p>
+        </div>
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="auth-message">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+
+        {% if providers %}
+            <div class="dashboard-list">
+                {% for provider in providers %}
+                    <article class="dashboard-item">
+                        <div>
+                            <h3>{{ provider.name }}</h3>
+                            <p>{{ provider.category.name }} • {{ provider.city }}, {{ provider.state }}</p>
+                        </div>
+                        <div class="dashboard-meta dashboard-actions">
+                            <a href="{% url 'approve_provider' provider.pk %}" class="primary-button">Approve</a>
+                            <a href="{% url 'reject_provider' provider.pk %}" class="logout-button">Reject</a>
+                        </div>
+                    </article>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="empty-state">
+                <h3>No pending submissions</h3>
+                <p>The moderation queue is clear right now.</p>
+            </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

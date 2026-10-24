@@ -1,0 +1,56 @@
+
+{% extends "base.html" %}
+
+{% block title %}Log In | LocalConnect{% endblock %}
+{% block meta_description %}Log in to your LocalConnect account to continue discovering trusted local services or managing your business listing.{% endblock %}
+
+{% block content %}
+<section class="auth-page">
+    <div class="auth-card">
+        <div class="auth-heading">
+            <span class="auth-eyebrow">WELCOME BACK</span>
+            <h1>Log In</h1>
+            <p>Sign in to your LocalConnect account to continue.</p>
+        </div>
+
+        {% if form.errors %}
+            <div class="auth-message" role="alert">
+                Your username or password is incorrect. Please try again.
+            </div>
+        {% endif %}
+
+        {% if next and user.is_authenticated %}
+            <div class="auth-message">
+                Your account does not have permission to access that page.
+            </div>
+        {% endif %}
+
+        <form method="post" class="auth-form">
+            {% csrf_token %}
+
+            <p>
+                <label for="{{ form.username.id_for_label }}">Username</label>
+                {{ form.username }}
+                {{ form.username.errors }}
+            </p>
+
+            <p>
+                <label for="{{ form.password.id_for_label }}">Password</label>
+                {{ form.password }}
+                {{ form.password.errors }}
+            </p>
+
+            <input type="hidden" name="next" value="{{ next|default:'' }}">
+
+            <button type="submit" class="auth-submit">
+                Log In
+            </button>
+        </form>
+
+        <p class="auth-footer-text">
+            Don't have an account?
+            <a href="{% url 'signup' %}?next={{ request.GET.next|default:'provider_register' }}">Create an account</a>
+        </p>
+    </div>
+</section>
+{% endblock %}
