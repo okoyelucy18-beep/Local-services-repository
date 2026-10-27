@@ -7,4 +7,4 @@ python manage.py collectstatic --no-input
 python manage.py migrate
 
 #run your superuser creation command
-python manage.py create_admin
+python manage.py createsuperuser --noinput || true
