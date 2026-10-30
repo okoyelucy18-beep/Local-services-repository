@@ -1,0 +1,825 @@
+﻿[
+{
+    "model": "admin.logentry",
+    "pk": 1,
+    "fields": {
+        "action_time": "2026-10-16T08:01:00.117Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "1",
+        "object_repr": "Deep Cleaning",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 2,
+    "fields": {
+        "action_time": "2026-10-16T08:02:33.404Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "2",
+        "object_repr": "Plumbing Repairs",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 3,
+    "fields": {
+        "action_time": "2026-10-16T08:02:44.716Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "3",
+        "object_repr": "Electrical",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 4,
+    "fields": {
+        "action_time": "2026-10-16T08:06:57.618Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "1",
+        "object_repr": "abi_dabi",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 5,
+    "fields": {
+        "action_time": "2026-10-16T10:03:16.456Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "4",
+        "object_repr": "nails salon",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 6,
+    "fields": {
+        "action_time": "2026-10-16T10:20:44.631Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "1",
+        "object_repr": "abi_dabi",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 7,
+    "fields": {
+        "action_time": "2026-10-16T10:21:00.581Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "3",
+        "object_repr": "okilobia",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 8,
+    "fields": {
+        "action_time": "2026-10-16T10:21:18.815Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "2",
+        "object_repr": "okilobia",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 9,
+    "fields": {
+        "action_time": "2026-10-16T10:21:52.691Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "1",
+        "object_repr": "Deep Cleaning",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 10,
+    "fields": {
+        "action_time": "2026-10-16T10:22:11.594Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "3",
+        "object_repr": "Electrical",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 11,
+    "fields": {
+        "action_time": "2026-10-16T10:23:30.813Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "2",
+        "object_repr": "Plumbing Repairs",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 12,
+    "fields": {
+        "action_time": "2026-10-16T10:24:09.306Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "4",
+        "object_repr": "nails salon",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 13,
+    "fields": {
+        "action_time": "2026-10-16T10:25:56.841Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "5",
+        "object_repr": "Home Services",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 14,
+    "fields": {
+        "action_time": "2026-10-16T10:27:20.615Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "6",
+        "object_repr": "Beauty Services",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 15,
+    "fields": {
+        "action_time": "2026-10-16T10:28:05.953Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "7",
+        "object_repr": "Home Services --> Plumbing Repairs",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 16,
+    "fields": {
+        "action_time": "2026-10-16T10:28:50.553Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "8",
+        "object_repr": "Home Services --> capenters",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 17,
+    "fields": {
+        "action_time": "2026-10-16T10:30:02.959Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "9",
+        "object_repr": "Plumbing Repairs --> Cleaning Services",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 18,
+    "fields": {
+        "action_time": "2026-10-16T10:30:42.984Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "9",
+        "object_repr": "Home Services --> Cleaning Services",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Parent\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 19,
+    "fields": {
+        "action_time": "2026-10-16T10:35:52.149Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "9",
+        "object_repr": "Beauty Servicess",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Name\", \"Parent\", \"Slug\"]}}, {\"added\": {\"name\": \"category\", \"object\": \"Beauty Servicess --> Nail Services\"}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 20,
+    "fields": {
+        "action_time": "2026-10-20T21:30:29.898Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "1",
+        "object_repr": "helter",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Is verified\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 21,
+    "fields": {
+        "action_time": "2026-10-21T17:56:50.891Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "8",
+        "object_repr": "Home Services --> Carpentry Services",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Name\", \"Slug\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 22,
+    "fields": {
+        "action_time": "2026-10-21T17:59:01.049Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "7",
+        "object_repr": "Home Services --> Plumbing Services",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Name\", \"Slug\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 23,
+    "fields": {
+        "action_time": "2026-10-21T18:03:22.600Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "9",
+        "object_repr": "Beauty Servicess",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 24,
+    "fields": {
+        "action_time": "2026-10-21T18:04:40.310Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "6",
+        "object_repr": "Beauty Services",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 25,
+    "fields": {
+        "action_time": "2026-10-21T18:06:34.119Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "11",
+        "object_repr": "Beauty Services --> Nail Services",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 26,
+    "fields": {
+        "action_time": "2026-10-23T21:35:20.251Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "2",
+        "object_repr": "Asiwaju",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Is verified\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 27,
+    "fields": {
+        "action_time": "2026-10-23T21:35:20.253Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "4",
+        "object_repr": "lilili",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Is verified\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 28,
+    "fields": {
+        "action_time": "2026-10-23T21:35:20.255Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "3",
+        "object_repr": "lilili",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Is verified\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 29,
+    "fields": {
+        "action_time": "2026-10-23T21:35:29.336Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "2",
+        "object_repr": "Asiwaju",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Is verified\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 30,
+    "fields": {
+        "action_time": "2026-10-23T21:35:29.339Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "4",
+        "object_repr": "lilili",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Is verified\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 31,
+    "fields": {
+        "action_time": "2026-10-23T21:35:29.341Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "3",
+        "object_repr": "lilili",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Is verified\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 32,
+    "fields": {
+        "action_time": "2026-10-23T21:35:48.662Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "2",
+        "object_repr": "Asiwaju",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Is verified\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 33,
+    "fields": {
+        "action_time": "2026-10-23T21:35:48.664Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "4",
+        "object_repr": "lilili",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Is verified\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 34,
+    "fields": {
+        "action_time": "2026-10-23T21:35:48.666Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "3",
+        "object_repr": "lilili",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Is verified\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 35,
+    "fields": {
+        "action_time": "2026-10-23T21:36:13.677Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "2",
+        "object_repr": "Asiwaju",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Status\", \"Is verified\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 36,
+    "fields": {
+        "action_time": "2026-10-23T21:36:50.993Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "4",
+        "object_repr": "lilili",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Status\", \"Is verified\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 37,
+    "fields": {
+        "action_time": "2026-10-23T21:37:26.085Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "3",
+        "object_repr": "lilili",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Status\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 38,
+    "fields": {
+        "action_time": "2026-10-26T23:07:36.006Z",
+        "user": 1,
+        "content_type": 4,
+        "object_id": "5",
+        "object_repr": "localize",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 39,
+    "fields": {
+        "action_time": "2026-10-26T23:16:46.689Z",
+        "user": 1,
+        "content_type": 4,
+        "object_id": "5",
+        "object_repr": "localize",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$1500000$5E15WfDZePXhcU2aw2XKMI$AHCYl7YgCgI0jPo1D/sjenCO1jlLfM0hcvYV6QAttHo=",
+        "last_login": "2026-10-26T23:03:48.808Z",
+        "is_superuser": true,
+        "username": "ebube",
+        "first_name": "",
+        "last_name": "",
+        "email": "okoyelucy.18@gmail.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2026-10-14T20:37:36.668Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+        "password": "pbkdf2_sha256$1500000$JDtG0QOsb1lyAvKDbdQviU$v8Q90watTen2LJ0Z/nInhYOXRMwkCEwne1gPZPj26cg=",
+        "last_login": "2026-10-23T23:07:42.074Z",
+        "is_superuser": false,
+        "username": "unilaq",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-10-23T21:29:08.302Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 3,
+    "fields": {
+        "password": "",
+        "last_login": "2026-10-23T22:49:13.262Z",
+        "is_superuser": false,
+        "username": "navbar_check",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-10-23T22:49:09.702Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 4,
+    "fields": {
+        "password": "",
+        "last_login": "2026-10-23T22:59:55.057Z",
+        "is_superuser": false,
+        "username": "nav_dashboard_check",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-10-23T22:59:49.257Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "919c49ilyzldl9sax6dd6b3kr2g00ehk",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2hCYAQSX7j1DM8BUqgaS0q6MdzckXej2v_f-W0y0b2XaO6_TksVFgDj9bpHSk-sA-UH13mRqdVuXKIciD9rlrWV-XQ_376BQL6MGhSrEoDxpQo3oYgg-REjsvGbGFK0NBjADUzbzbAFBG07unDxiFp8vyQ83bw:1xKOM5:euAqNTybq9jrr_jyAu-RYOMBIaUZ2MnK9LO5BxvYgoU",
+        "expire_date": "2026-11-06T23:07:21.821Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "cl22nhu1obu45zptcsfmwnx8rhywxeh2",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQAP_C2RCgyyIevfsGssBWqgaS0p6MfzckPeh1ZjJvEWjfStg7r2HJ4iK0OP2ySOnJdYj8oHpvMrW6rUuUI5GH7fLWMr-uR_s3KNTL2MaYvXeK3DT5NAEiGmeVwpgYyXjUljIjkKUz8pxAAVqYrdZgDXsQny_FfDbm:1xLTjJ:K5Lq6MN6GEnoTao4zigV4NECH6pHfXtQCFqVeT_FiVM",
+        "expire_date": "2026-11-09T23:03:49.541Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "h9sf3qwmnp27lxyeegvva1ef1l7v9zhp",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2hCYAQSX7j1DM8BUqgaS0q6MdzckXej2v_f-W0y0b2XaO6_TksVFgDj9bpHSk-sA-UH13mRqdVuXKIciD9rlrWV-XQ_376BQL6MGhSrEoDxpQo3oYgg-REjsvGbGFK0NBjADUzbzbAFBG07unDxiFp8vyQ83bw:1xKOMD:5NCvx_RoSo_N5g8YwfnxxWgZ1BD6VwITq5HfLWqhBwc",
+        "expire_date": "2026-11-06T23:07:29.365Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "jf0ebhwlw6kiaem4piamnq0pxtnxwi0q",
+    "fields": {
+        "session_data": "e30:1xKOMJ:DQryusMbKfYVwck80zoM8eOCCeFfREbbanDHUwhj5sw",
+        "expire_date": "2026-11-06T23:07:35.989Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "pvbs6jvosqxtgaj1v68n94vwtx17cgpy",
+    "fields": {
+        "session_data": ".eJxVjEsOgjAUAO_y1qah9FUoS_ecgfR9KqhpEwor490NCQvdzkzmDVPct3naq67TIjAAwuWXUeSn5kPII-Z7MVzyti5kjsSctpqxiL5uZ_s3mGOdYQAXMCp2SqKJ0fkO0zWRw9ZSb31DzK11DVsJTd_1IYQgHK1i8l4sugSfL-zWN90:1xKOEu:y2mmRYXLBd90ZUnAzyHYh0ZdXx3fcHVVLq8lLX9UYJ4",
+        "expire_date": "2026-11-06T22:59:56.255Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "qq3xqredejmv1m2b3tzc9om1anrs16r7",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2hCYAQSX7j1DM8BUqgaS0q6MdzckXej2v_f-W0y0b2XaO6_TksVFgDj9bpHSk-sA-UH13mRqdVuXKIciD9rlrWV-XQ_376BQL6MGhSrEoDxpQo3oYgg-REjsvGbGFK0NBjADUzbzbAFBG07unDxiFp8vyQ83bw:1xKOMB:mxu4nQSIv68gs6oW9uPlYx-zAI-deAokvH5T3gDnwQM",
+        "expire_date": "2026-11-06T23:07:27.554Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "tw5uu0uz7a8k7xqpht7klzatyc3mfev0",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2hCYAQSX7j1DM8BUqgaS0q6MdzckXej2v_f-W0y0b2XaO6_TksVFgDj9bpHSk-sA-UH13mRqdVuXKIciD9rlrWV-XQ_376BQL6MGhSrEoDxpQo3oYgg-REjsvGbGFK0NBjADUzbzbAFBG07unDxiFp8vyQ83bw:1xKOM0:XY_DIkSjfiFQ_447zkKRKHhDKtp3qm5PjdREu7_HuLo",
+        "expire_date": "2026-11-06T23:07:16.820Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "uc8r2owfl094qnhqgvwzyri26i1nzvsk",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2hCYAQSX7j1DM8BUqgaS0q6MdzckXej2v_f-W0y0b2XaO6_TksVFgDj9bpHSk-sA-UH13mRqdVuXKIciD9rlrWV-XQ_376BQL6MGhSrEoDxpQo3oYgg-REjsvGbGFK0NBjADUzbzbAFBG07unDxiFp8vyQ83bw:1xKOML:49Cb-vsA0DhiU39v_cE9aAFVD0t1MAKUWbUOG1k1TcY",
+        "expire_date": "2026-11-06T23:07:37.812Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "v84r9uywjnyp78wx7di6wrd2n170qsuy",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2hCYAQSX7j1DM8BUqgaS0q6MdzckXej2v_f-W0y0b2XaO6_TksVFgDj9bpHSk-sA-UH13mRqdVuXKIciD9rlrWV-XQ_376BQL6MGhSrEoDxpQo3oYgg-REjsvGbGFK0NBjADUzbzbAFBG07unDxiFp8vyQ83bw:1xKOMG:rn2xgGpdr5Yx99MroRIqfhlQYit0Fsokxo4oyTulX9g",
+        "expire_date": "2026-11-06T23:07:32.797Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "wcw7l8asns8psn51bpahrmhx75oclrdv",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2hCYAQSX7j1DM8BUqgaS0q6MdzckXej2v_f-W0y0b2XaO6_TksVFgDj9bpHSk-sA-UH13mRqdVuXKIciD9rlrWV-XQ_376BQL6MGhSrEoDxpQo3oYgg-REjsvGbGFK0NBjADUzbzbAFBG07unDxiFp8vyQ83bw:1xKOMF:cqC4DtQWDP0N4QEP_YSSuE_AxcYTzkekyHCd6dFMhDo",
+        "expire_date": "2026-11-06T23:07:31.544Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "wl6obw39zhn7ti4gaivrtu1t51m8gtvj",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2hCYAQSX7j1DM8BUqgaS0q6MdzckXej2v_f-W0y0b2XaO6_TksVFgDj9bpHSk-sA-UH13mRqdVuXKIciD9rlrWV-XQ_376BQL6MGhSrEoDxpQo3oYgg-REjsvGbGFK0NBjADUzbzbAFBG07unDxiFp8vyQ83bw:1xKOMV:czEJi81iwC43SvLZDybzZ9mMUNyboRfUz6aMYxI22hA",
+        "expire_date": "2026-11-06T23:07:47.733Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "wt7hg9gb7l5ihmfshxm4svr2ebmwgkhz",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2hCYAQSX7j1DM8BUqgaS0q6MdzckXej2v_f-W0y0b2XaO6_TksVFgDj9bpHSk-sA-UH13mRqdVuXKIciD9rlrWV-XQ_376BQL6MGhSrEoDxpQo3oYgg-REjsvGbGFK0NBjADUzbzbAFBG07unDxiFp8vyQ83bw:1xKOM2:5AlnygFCmXzEFFqvTXpD2GesmG4VOpzIVrk3B0x1PUs",
+        "expire_date": "2026-11-06T23:07:18.516Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "zxuafb8vwdvpsc6z3avtu1dx363r7s5z",
+    "fields": {
+        "session_data": "e30:1xKOMK:6-EC64-qiV7Cpml4FpWB9X3gWk8wy5Y0OpgI6wa3NbE",
+        "expire_date": "2026-11-06T23:07:36.878Z"
+    }
+},
+{
+    "model": "handyman.category",
+    "pk": 5,
+    "fields": {
+        "name": "Home Services",
+        "parent": null,
+        "slug": "home-services"
+    }
+},
+{
+    "model": "handyman.category",
+    "pk": 6,
+    "fields": {
+        "name": "Beauty Services",
+        "parent": null,
+        "slug": "beauty-services"
+    }
+},
+{
+    "model": "handyman.category",
+    "pk": 7,
+    "fields": {
+        "name": "Plumbing Services",
+        "parent": 5,
+        "slug": "plumbing-services"
+    }
+},
+{
+    "model": "handyman.category",
+    "pk": 8,
+    "fields": {
+        "name": "Carpentry Services",
+        "parent": 5,
+        "slug": "carpentry-services"
+    }
+},
+{
+    "model": "handyman.category",
+    "pk": 11,
+    "fields": {
+        "name": "Nail Services",
+        "parent": 6,
+        "slug": "nail-services"
+    }
+},
+{
+    "model": "handyman.serviceprovider",
+    "pk": 1,
+    "fields": {
+        "name": "helter",
+        "category": 8,
+        "description": "capenters",
+        "address": "Nsugbe near saint john catholic church",
+        "state": "Anambra",
+        "city": "onitsha",
+        "neighborhood": "",
+        "phone": "0894898948",
+        "email": "",
+        "website": "",
+        "image": "",
+        "status": "pending",
+        "is_verified": true,
+        "owner": null,
+        "created_at": "2026-10-19T18:44:12.540Z"
+    }
+},
+{
+    "model": "handyman.serviceprovider",
+    "pk": 2,
+    "fields": {
+        "name": "Asiwaju",
+        "category": 7,
+        "description": "fix your pipes",
+        "address": "Nsugbe near saint john catholic church",
+        "state": "Anambra",
+        "city": "Nsugbe",
+        "neighborhood": "",
+        "phone": "03833372337",
+        "email": "lilielive@gmail.com",
+        "website": "",
+        "image": "",
+        "status": "approved",
+        "is_verified": true,
+        "owner": null,
+        "created_at": "2026-10-22T18:26:55.967Z"
+    }
+},
+{
+    "model": "handyman.serviceprovider",
+    "pk": 3,
+    "fields": {
+        "name": "lilili",
+        "category": 11,
+        "description": "be beautiful",
+        "address": "Nsugbe",
+        "state": "Anambra",
+        "city": "onitsha",
+        "neighborhood": "",
+        "phone": "77494745749",
+        "email": "hkhflhhfu@gmail.com",
+        "website": "",
+        "image": "",
+        "status": "rejected",
+        "is_verified": false,
+        "owner": 2,
+        "created_at": "2026-10-23T21:31:17.942Z"
+    }
+},
+{
+    "model": "handyman.serviceprovider",
+    "pk": 4,
+    "fields": {
+        "name": "lilili",
+        "category": 11,
+        "description": "be beautiful",
+        "address": "Nsugbe",
+        "state": "Anambra",
+        "city": "onitsha",
+        "neighborhood": "",
+        "phone": "77494745749",
+        "email": "hkhflhhfu@gmail.com",
+        "website": "",
+        "image": "",
+        "status": "approved",
+        "is_verified": true,
+        "owner": 2,
+        "created_at": "2026-10-23T21:31:17.790Z"
+    }
+},
+{
+    "model": "handyman.review",
+    "pk": 1,
+    "fields": {
+        "provider": 2,
+        "user": 1,
+        "rating": 4,
+        "comment": "its okay",
+        "created_at": "2026-10-23T21:40:54.159Z"
+    }
+}
+]
