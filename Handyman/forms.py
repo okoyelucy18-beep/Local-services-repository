@@ -68,3 +68,10 @@ class ServiceProviderRegistrationForm(forms.ModelForm):
                 "Enter a valid business phone number."
             )
         return phone
+
+
+class VendorSubmissionForm(ServiceProviderRegistrationForm):
+    """Backward-compatible alias for the public business submission flow."""
+
+    pass
+

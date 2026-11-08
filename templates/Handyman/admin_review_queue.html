@@ -27,8 +27,14 @@
                             <p>{{ provider.category.name }} • {{ provider.city }}, {{ provider.state }}</p>
                         </div>
                         <div class="dashboard-meta dashboard-actions">
-                            <a href="{% url 'approve_provider' provider.pk %}" class="primary-button">Approve</a>
-                            <a href="{% url 'reject_provider' provider.pk %}" class="logout-button">Reject</a>
+                            <form method="post" action="{% url 'approve_provider' provider.pk %}">
+                                {% csrf_token %}
+                                <button type="submit" class="primary-button">Approve</button>
+                            </form>
+                            <form method="post" action="{% url 'reject_provider' provider.pk %}">
+                                {% csrf_token %}
+                                <button type="submit" class="logout-button">Reject</button>
+                            </form>
                         </div>
                     </article>
                 {% endfor %}

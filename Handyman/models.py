@@ -89,12 +89,12 @@ class ServiceProvider(models.Model):
         super().save(*args, **kwargs)
 
     def average_rating(self):
-        result = self.reviews.aggregate(avg_rating=Avg('rating'))
+        result = self.reviews.filter(is_hidden=False).aggregate(avg_rating=Avg('rating'))
         value = result.get('avg_rating')
         return value if value is not None else 0.0
 
     def review_count(self):
-        return self.reviews.count()
+        return self.reviews.filter(is_hidden=False).count()
 
     def get_absolute_url(self):
         return reverse(
@@ -117,6 +117,7 @@ class Review(models.Model):
         choices=[(i, i) for i in range(1, 6)],
     )
     comment = models.TextField(blank=True)
+    is_hidden = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:

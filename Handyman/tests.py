@@ -1,4 +1,7 @@
+from unittest.mock import patch
+
 from django.contrib.auth import get_user_model
+from django.core.management import call_command
 from django.test import TestCase
 
 from .models import Category, Review, ServiceProvider
@@ -32,6 +35,28 @@ class AccountPersistenceTests(TestCase):
         )
         self.assertEqual(login_response.status_code, 302)
         self.assertEqual(int(self.client.session['_auth_user_id']), user.pk)
+
+
+class AdminSuperuserPersistenceTests(TestCase):
+    def test_ensure_superuser_creates_persistent_admin_from_environment(self):
+        user_model = get_user_model()
+        user_model.objects.filter(username='renderadmin').delete()
+
+        with patch.dict(
+            'os.environ',
+            {
+                'DJANGO_SUPERUSER_USERNAME': 'renderadmin',
+                'DJANGO_SUPERUSER_EMAIL': 'renderadmin@example.com',
+                'DJANGO_SUPERUSER_PASSWORD': 'RenderPass!123',
+            },
+            clear=False,
+        ):
+            call_command('ensure_superuser')
+
+        user = user_model.objects.get(username='renderadmin')
+        self.assertTrue(user.is_superuser)
+        self.assertTrue(user.is_staff)
+        self.assertTrue(user.check_password('RenderPass!123'))
 
 
 class ReviewFlowTests(TestCase):
@@ -71,6 +96,33 @@ class ReviewFlowTests(TestCase):
         self.assertEqual(review.provider, self.provider)
         self.assertEqual(review.rating, 5)
         self.assertEqual(self.provider.average_rating(), 5.0)
+
+    def test_hidden_reviews_are_excluded_from_public_detail_and_rating(self):
+        Review.objects.create(
+            provider=self.provider,
+            user=self.user,
+            rating=5,
+            comment='Visible review',
+        )
+        hidden_user = get_user_model().objects.create_user(
+            username='hidden_reviewer',
+            password='HiddenReviewPass!814',
+        )
+        Review.objects.create(
+            provider=self.provider,
+            user=hidden_user,
+            rating=1,
+            comment='Hidden review text',
+            is_hidden=True,
+        )
+
+        response = self.client.get(f'/provider/{self.provider.pk}/')
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'Visible review')
+        self.assertNotContains(response, 'Hidden review text')
+        self.assertEqual(response.context['average_rating'], 5.0)
+        self.assertEqual(response.context['review_count'], 1)
 
 
 class OwnerDashboardTests(TestCase):

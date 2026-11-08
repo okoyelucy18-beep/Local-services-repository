@@ -1,0 +1,41 @@
+<!-- custom_admin/templates/custom_admin/manage_form.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ title }} | LocalConnect Admin</title>
+    <link rel="stylesheet" href="{% static 'css/custom_admin.css' %}">
+</head>
+<body class="admin-page">
+    <header class="admin-topbar">
+        <div class="admin-topbar-inner">
+            <a class="admin-brand" href="{% url 'directory_admin_dashboard' %}"><span class="admin-brand-mark" aria-hidden="true">L</span><span>LocalConnect / Admin</span></a>
+            <nav class="admin-topbar-nav" aria-label="Administration">
+                <a href="{% url 'directory_admin_dashboard' %}">Directory</a>
+                <a href="{% url 'directory_admin_users' %}" aria-current="page">User accounts</a>
+                <a href="{% url 'home' %}">View site</a>
+            </nav>
+        </div>
+    </header>
+    <main class="admin-shell">
+        <section class="admin-form-panel">
+            <p class="admin-kicker">Administration</p>
+            <h1>{{ title }}</h1>
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div class="admin-button-row">
+                    <button type="submit" class="admin-button admin-button-primary">Save changes</button>
+                    {% if cancel_url %}
+                        <a href="{% url cancel_url %}" class="admin-button">Cancel</a>
+                    {% else %}
+                        <a href="{% url 'directory_admin_dashboard' %}" class="admin-button">Cancel</a>
+                    {% endif %}
+                </div>
+            </form>
+        </section>
+    </main>
+</body>
+</html>

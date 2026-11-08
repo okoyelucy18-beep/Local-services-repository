@@ -1,0 +1,165 @@
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Directory Control Panel | LocalConnect</title>
+    <link rel="stylesheet" href="{% static 'css/custom_admin.css' %}">
+</head>
+<body class="admin-page">
+    <header class="admin-topbar">
+        <div class="admin-topbar-inner">
+            <a class="admin-brand" href="{% url 'directory_admin_dashboard' %}"><span class="admin-brand-mark" aria-hidden="true">L</span><span>LocalConnect / Admin</span></a>
+        <nav class="admin-topbar-nav" aria-label="Administration">
+            <a href="{% url 'directory_admin_dashboard' %}" aria-current="page">Directory</a>
+            <a href="{% url 'directory_admin_users' %}">User accounts</a>
+            <a href="{% url 'home' %}">View site</a>
+        </nav>
+        </div>
+    </header>
+    <main class="admin-shell">
+        <header class="admin-page-header">
+            <div><p class="admin-kicker">Operations</p><h1>Directory control panel</h1><p class="admin-subtitle">Review listings, moderate feedback, and maintain the service directory.</p></div>
+        </header>
+
+        <div class="admin-overview"><p class="admin-overview-label">Live service providers</p><p class="admin-overview-value">{{ approved_listings.count }}</p></div>
+        <div class="admin-dashboard-grid">
+            <!-- Left Side: Actionable Queues -->
+            <div class="admin-main-column">
+                
+                <!-- Pending Listings -->
+                <section class="admin-section">
+                    <div class="admin-section-heading"><h2>Pending listings</h2><span class="admin-count">{{ pending_listings.count }}</span></div>
+                    {% if pending_listings %}
+                        <div class="admin-table-wrap"><table class="admin-table">
+                            <thead>
+                                <tr class="bg-gray-100 text-gray-700 font-semibold border-b">
+                                    <th class="p-3">Business</th>
+                                    <th class="p-3">City</th>
+                                    <th class="p-3 text-right">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for provider in pending_listings %}
+                                <tr class="border-b hover:bg-gray-50 transition">
+                                    <!-- FIXED: Using provider.name -->
+                                    <td class="p-3 font-medium text-gray-800">{{ provider.name }}</td>
+                                    <td class="p-3 text-gray-500">{{ provider.city }}</td>
+                                    <td class="p-3 text-right">
+                                        <form method="post" action="{% url 'custom_admin_approve_provider' provider.pk %}" class="inline">
+                                            {% csrf_token %}
+                                            <button type="submit" class="admin-button admin-button-primary">Approve</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table></div>
+                    {% else %}
+                        <p class="admin-empty">All business profiles have been audited.</p>
+                    {% endif %}
+                </section>
+
+                <!-- Categories Container -->
+                <section class="admin-section">
+                    <div class="admin-section-heading">
+                        <h2>Directory categories</h2>
+                        <a href="{% url 'add_category' %}" class="admin-button admin-button-primary">Add category</a>
+                    </div>
+                    <div class="admin-category-list">
+                        {% for cat in categories %}
+                            <div class="admin-category">
+                                <span>{{ cat.name }}</span>
+                                <span class="admin-category-actions">
+                                    <a href="{% url 'edit_category' cat.pk %}" class="admin-icon-action" aria-label="Edit {{ cat.name }}" title="Edit category">&#9998;</a>
+                                    <form method="post" action="{% url 'delete_category' cat.pk %}" class="admin-inline-form" onsubmit="return confirm('Are you sure?')">
+                                        {% csrf_token %}
+                                        <button type="submit" class="admin-icon-action admin-icon-action-danger" aria-label="Delete {{ cat.name }}" title="Delete category">&times;</button>
+                                    </form>
+                                </span>
+                            </div>
+                        {% empty %}
+                            <p class="admin-empty">No categories found.</p>
+                        {% endfor %}
+                    </div>
+                </section>
+            </div>
+
+            <!-- Reviews Sidebar Mod Queue -->
+            <section class="admin-section">
+                <div class="admin-section-heading"><div><h2>Recent reviews</h2><p>Visibility and moderation queue.</p></div></div>
+                <div class="admin-review-list">
+                    {% for review in recent_reviews %}
+                    <article class="admin-review">
+                        <div class="admin-review-meta">
+                            <span class="admin-review-user">{{ review.user.username }}</span>
+                            <span class="admin-review-rating">&#9733; {{ review.rating }}/5</span>
+                        </div>
+                        <!-- FIXED: Using review.provider.name -->
+                        <p class="admin-review-target">{{ review.provider.name }}</p>
+                        <p class="admin-review-comment">&ldquo;{{ review.comment }}&rdquo;</p>
+                        <div class="admin-review-footer">
+                            <span class="admin-pill {% if review.is_hidden %}admin-pill-red{% else %}admin-pill-green{% endif %}">
+                                {% if review.is_hidden %}Hidden{% else %}Public{% endif %}
+                            </span>
+                            <form method="post" action="{% url 'toggle_review_visibility' review.pk %}">
+                                {% csrf_token %}
+                                <button type="submit" class="admin-text-action">
+                                    {% if review.is_hidden %}Show review{% else %}Hide review{% endif %}
+                                </button>
+                            </form>
+                        </div>
+                    </article>
+                    {% endfor %}
+                    {% if not recent_reviews %}<p class="admin-empty">No reviews have been submitted yet.</p>{% endif %}
+                </div>
+            </section>
+        </div>
+
+        <!-- Full Width Approved Live Database -->
+        <section class="admin-section">
+            <div class="admin-section-heading"><div><h2>Live service providers</h2><p>Approved businesses currently visible in the directory.</p></div><span class="admin-pill admin-pill-green">{{ approved_listings.count }} active</span></div>
+            {% if approved_listings %}
+                <div class="admin-table-wrap">
+                    <table class="admin-table">
+                        <thead>
+                            <tr class="bg-gray-100 text-gray-700 font-semibold border-b border-gray-200">
+                                <th class="p-3">Business Name</th>
+                                <th class="p-3">Category</th>
+                                <th class="p-3">City</th>
+                                <th class="p-3 text-right">Database Controls</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for provider in approved_listings %}
+                            <tr class="border-b border-gray-100 hover:bg-gray-50 transition">
+                                <!-- FIXED: Using provider.name -->
+                                <td class="p-3 font-semibold text-gray-900">{{ provider.name }}</td>
+                                <td class="p-3">
+                                    <span class="admin-pill admin-pill-green">
+                                        {{ provider.category.name|default:"General" }}
+                                    </span>
+                                </td>
+                                <td class="p-3 text-gray-500">{{ provider.city }}</td>
+                                <td class="p-3 text-right space-x-2">
+                                    <a href="{% url 'edit_provider' provider.pk %}" class="admin-button">Edit</a>
+                                    <form method="post" action="{% url 'delete_provider' provider.pk %}" class="inline" onsubmit="return confirm('Are you sure?')">
+                                        {% csrf_token %}
+                                        <button type="submit" class="admin-button admin-button-danger">Remove</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <p class="admin-empty">No live service profiles are currently active.</p>
+            {% endif %}
+        </section>
+    </main>
+</body>
+</html>

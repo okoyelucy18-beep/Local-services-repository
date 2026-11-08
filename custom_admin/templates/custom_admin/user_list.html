@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>User Accounts | LocalConnect Admin</title>
+    <link rel="stylesheet" href="{% static 'css/custom_admin.css' %}">
+</head>
+<body class="admin-page">
+    <header class="admin-topbar">
+        <div class="admin-topbar-inner">
+            <a class="admin-brand" href="{% url 'directory_admin_dashboard' %}"><span class="admin-brand-mark" aria-hidden="true">L</span><span>LocalConnect / Admin</span></a>
+            <nav class="admin-topbar-nav" aria-label="Administration">
+                <a href="{% url 'directory_admin_dashboard' %}">Directory</a>
+                <a href="{% url 'directory_admin_users' %}" aria-current="page">User accounts</a>
+                <a href="{% url 'home' %}">View site</a>
+            </nav>
+        </div>
+    </header>
+    <main class="admin-shell">
+        <header class="admin-page-header">
+            <div>
+                <p class="admin-kicker">Access management</p>
+                <h1>User accounts</h1>
+                <p class="admin-subtitle">Manage account status and administrative access.</p>
+            </div>
+            <a href="{% url 'directory_admin_add_user' %}" class="admin-button admin-button-primary">Create account</a>
+        </header>
+        {% if messages %}
+            {% for message in messages %}<p class="admin-messages">{{ message }}</p>{% endfor %}
+        {% endif %}
+        <section class="admin-section">
+            <div class="admin-section-heading">
+                <div><h2>Directory accounts</h2><p>{{ users|length }} account{{ users|length|pluralize }} registered</p></div>
+            </div>
+            <div class="admin-table-wrap">
+                <table class="admin-table">
+                    <thead><tr><th>Username</th><th>Email</th><th>Access</th><th>Status</th><th>Actions</th></tr></thead>
+                    <tbody>
+                        {% for user in users %}
+                        <tr>
+                            <td class="admin-table-name">{{ user.username }}</td>
+                            <td class="admin-table-muted">{{ user.email|default:"-" }}</td>
+                            <td>
+                                {% if user.is_superuser %}<span class="admin-pill admin-pill-green">Superuser</span>
+                                {% elif user.is_staff %}<span class="admin-pill admin-pill-amber">Staff</span>
+                                {% else %}<span class="admin-pill">User</span>{% endif %}
+                            </td>
+                            <td>
+                                {% if user.is_active %}<span class="admin-pill admin-pill-green">Active</span>
+                                {% else %}<span class="admin-pill admin-pill-red">Inactive</span>{% endif %}
+                            </td>
+                            <td>
+                                <div class="admin-row-actions">
+                                    <a href="{% url 'directory_admin_edit_user' user.pk %}" class="admin-button">Edit</a>
+                                    {% if user.pk != request.user.pk %}
+                                        <form method="post" action="{% url 'directory_admin_toggle_user_active' user.pk %}" class="admin-inline-form">
+                                            {% csrf_token %}
+                                            <button type="submit" class="admin-button">{% if user.is_active %}Deactivate{% else %}Activate{% endif %}</button>
+                                        </form>
+                                        <a href="{% url 'directory_admin_delete_user' user.pk %}" class="admin-button admin-button-danger">Delete</a>
+                                    {% endif %}
+                                </div>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr><td class="admin-table-muted" colspan="5">No user accounts found.</td></tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
