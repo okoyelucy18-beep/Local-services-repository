@@ -8,6 +8,7 @@ urlpatterns = [
     path("", views.home, name="home"),
     path("handyman-home/", views.home, name="handyman_home"),
     path("services/", views.explore_services, name="explore_services"),
+    path("find-nearby/", views.find_nearby, name="find_nearby"),
     path("provider/<int:pk>/", views.provider_detail, name="provider_detail"),
     path("provider/<int:pk>/review/", views.add_review, name="add_review"),
     path("register/", views.register_provider, name="provider_register"),

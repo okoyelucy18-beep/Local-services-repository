@@ -180,3 +180,44 @@ class CustomAdminMutationMethodTests(TestCase):
 
 		self.assertEqual(response.status_code, 302)
 		self.assertIn("/login/", response["Location"])
+
+
+class CustomAdminCategoryDescriptionTests(TestCase):
+	def setUp(self):
+		self.admin = get_user_model().objects.create_superuser(
+			username="categoryadmin",
+			email="categoryadmin@example.com",
+			password="StrongAdminPass!814",
+		)
+		self.client.force_login(self.admin)
+
+	def test_superuser_can_create_and_edit_category_description(self):
+		response = self.client.post(
+			reverse("add_category"),
+			{
+				"name": "Home Repairs",
+				"description": "Repairs and maintenance for the home.",
+				"slug": "home-repairs",
+			},
+		)
+
+		self.assertRedirects(response, reverse("directory_admin_dashboard"))
+		category = Category.objects.get(slug="home-repairs")
+		self.assertEqual(category.description, "Repairs and maintenance for the home.")
+		self.assertContains(
+			self.client.get(reverse("directory_admin_dashboard")),
+			"Repairs and maintenance for the home.",
+		)
+
+		response = self.client.post(
+			reverse("edit_category", args=[category.pk]),
+			{
+				"name": "Home Repairs",
+				"description": "Skilled home repair professionals.",
+				"slug": "home-repairs",
+			},
+		)
+
+		self.assertRedirects(response, reverse("directory_admin_dashboard"))
+		category.refresh_from_db()
+		self.assertEqual(category.description, "Skilled home repair professionals.")

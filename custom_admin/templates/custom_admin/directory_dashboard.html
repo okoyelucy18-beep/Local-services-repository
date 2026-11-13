@@ -72,7 +72,10 @@
                     <div class="admin-category-list">
                         {% for cat in categories %}
                             <div class="admin-category">
-                                <span>{{ cat.name }}</span>
+                                <span class="admin-category-copy">
+                                    <span>{{ cat.name }}</span>
+                                    <span class="admin-category-description">{{ cat.description|default:"No description" }}</span>
+                                </span>
                                 <span class="admin-category-actions">
                                     <a href="{% url 'edit_category' cat.pk %}" class="admin-icon-action" aria-label="Edit {{ cat.name }}" title="Edit category">&#9998;</a>
                                     <form method="post" action="{% url 'delete_category' cat.pk %}" class="admin-inline-form" onsubmit="return confirm('Are you sure?')">

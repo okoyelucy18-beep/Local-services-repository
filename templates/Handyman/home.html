@@ -19,42 +19,6 @@
             <a href="{% url 'explore_services' %}" class="primary-button">Browse services</a>
             <a href="{% url 'provider_register' %}" class="secondary-button">List your business</a>
         </div>
-
-        <form method="get" action="{% url 'explore_services' %}" class="search-form">
-            <input
-                type="search"
-                name="q"
-                placeholder="What service do you need?"
-                value="{{ search_query }}"
-                aria-label="Search services"
-            >
-
-            <input
-                type="text"
-                name="state"
-                placeholder="State"
-                value="{{ selected_state }}"
-                aria-label="Filter by state"
-            >
-
-            <input
-                type="text"
-                name="city"
-                placeholder="City or town"
-                value="{{ selected_city }}"
-                aria-label="Filter by city"
-            >
-
-            <input
-                type="text"
-                name="neighborhood"
-                placeholder="Neighborhood"
-                value="{{ selected_neighborhood }}"
-                aria-label="Filter by neighborhood"
-            >
-
-            <button type="submit">Search</button>
-        </form>
     </div>
 </section>
 

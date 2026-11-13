@@ -7,6 +7,7 @@ from django.urls import reverse
 
 class Category(models.Model):
     name = models.CharField(max_length=100, unique=True)
+    description = models.TextField(blank=True, default="")
     parent = models.ForeignKey(
         "self",
         on_delete=models.CASCADE,

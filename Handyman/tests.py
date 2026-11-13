@@ -168,3 +168,65 @@ class OwnerDashboardTests(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertNotContains(response, 'Spark Clean')
+
+
+class NearbyBusinessSearchTests(TestCase):
+    def setUp(self):
+        self.category = Category.objects.create(name="Plumbing", slug="plumbing")
+        self.local_provider = ServiceProvider.objects.create(
+            name="Fegge Plumbing Co",
+            category=self.category,
+            description="Emergency pipe repairs and installation.",
+            address="12 Market Road",
+            state="Anambra",
+            city="Onitsha",
+            neighborhood="Fegge",
+            phone="08012345678",
+            status="approved",
+        )
+        ServiceProvider.objects.create(
+            name="Abuja Plumbing Co",
+            category=self.category,
+            description="Pipe repairs in Abuja.",
+            address="4 Central Road",
+            state="FCT",
+            city="Abuja",
+            neighborhood="Garki",
+            phone="08087654321",
+            status="approved",
+        )
+        ServiceProvider.objects.create(
+            name="Pending Fegge Plumber",
+            category=self.category,
+            description="Pending listing.",
+            address="8 Main Road",
+            state="Anambra",
+            city="Onitsha",
+            neighborhood="Fegge",
+            phone="08055555555",
+            status="pending",
+        )
+
+    def test_location_and_service_search_returns_approved_local_matches(self):
+        response = self.client.get(
+            "/find-nearby/",
+            {"service": "plumbing", "location": "Fegge, Onitsha, Anambra"},
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(
+            list(response.context["providers"]),
+            [self.local_provider],
+        )
+        self.assertContains(response, "Get directions")
+        self.assertNotContains(response, "Show on map")
+        self.assertNotContains(response, "nearby-map")
+
+    def test_location_can_match_city_when_neighborhood_is_not_specified(self):
+        response = self.client.get(
+            "/find-nearby/",
+            {"service": "Plumbing Co", "location": "Onitsha, Anambra"},
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(list(response.context["providers"]), [self.local_provider])

@@ -31,10 +31,9 @@ class AdminUserForm(forms.ModelForm):
 class AdminCategoryForm(forms.ModelForm):
     class Meta:
         model = Category
-        fields = ['name', 'slug']
+        fields = ['name', 'description', 'slug']
         widgets = {
-            'name': forms.TextInput(attrs={'class': 'w-full p-2 border border-gray-300 rounded-lg'}),
-            'slug': forms.TextInput(attrs={'class': 'w-full p-2 border border-gray-300 rounded-lg'}),
+            'description': forms.Textarea(attrs={'rows': 4}),
         }
 
 class AdminProviderForm(forms.ModelForm):

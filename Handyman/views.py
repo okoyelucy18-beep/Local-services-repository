@@ -64,6 +64,41 @@ def explore_services(request):
 	return render(request, "Handyman/explore_services.html", context)
 
 
+def find_nearby(request):
+	providers = ServiceProvider.objects.filter(status="approved").select_related("category")
+	service_query = request.GET.get("service", "").strip()
+	location_query = request.GET.get("location", "").strip()
+
+	if service_query:
+		providers = providers.filter(
+			Q(name__icontains=service_query)
+			| Q(description__icontains=service_query)
+			| Q(category__name__icontains=service_query)
+		)
+
+	location_terms = [term.strip() for term in location_query.split(",") if term.strip()]
+	for term in location_terms:
+		if term.lower().startswith(("near ", "in ")):
+			term = term.split(" ", 1)[1].strip()
+		if term:
+			providers = providers.filter(
+				Q(address__icontains=term)
+				| Q(neighborhood__icontains=term)
+				| Q(city__icontains=term)
+				| Q(state__icontains=term)
+			)
+
+	return render(
+		request,
+		"Handyman/find_nearby.html",
+		{
+			"providers": providers.distinct(),
+			"service_query": service_query,
+			"location_query": location_query,
+		},
+	)
+
+
 def provider_detail(request, pk):
 	provider = get_object_or_404(
 		ServiceProvider.objects.select_related("category"),

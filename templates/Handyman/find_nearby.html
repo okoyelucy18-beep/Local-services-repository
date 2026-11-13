@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Find Local Businesses | LocalConnect{% endblock %}
+{% block meta_description %}Find local businesses by service and location, then get directions to the business you choose.{% endblock %}
+
+{% block content %}
+<section class="nearby-page section">
+    <header class="nearby-heading">
+        <p class="eyebrow">FIND BUSINESSES</p>
+        <h1>Find businesses near you</h1>
+        <p>Type what you need and the area you want to search. We will show businesses close to that place.</p>
+    </header>
+
+    <form method="get" class="nearby-search-form">
+        <div class="nearby-field">
+            <label for="service-query">What do you need?</label>
+            <input id="service-query" type="search" name="service" value="{{ service_query }}" placeholder="Plumber, cleaning, repair, salon...">
+        </div>
+        <div class="nearby-field nearby-location-field">
+            <label for="location-query">Where?</label>
+            <input id="location-query" type="text" name="location" value="{{ location_query }}" placeholder="e.g. Fegge, Onitsha or Anambra" required>
+        </div>
+        <button type="submit" class="nearby-submit">Search</button>
+    </form>
+
+    <div class="nearby-results-heading">
+        <div>
+            <p class="eyebrow">RESULTS</p>
+            <h2>{{ providers|length }} business{{ providers|length|pluralize }} found</h2>
+        </div>
+        {% if location_query %}<p class="nearby-search-location">Near <strong>{{ location_query }}</strong></p>{% endif %}
+    </div>
+
+    <div class="nearby-layout">
+        <section class="nearby-results" aria-label="Businesses matching your search">
+            {% for provider in providers %}
+                <article class="nearby-result">
+                    <div class="nearby-result-main">
+                        <div class="nearby-result-title">
+                            <div>
+                                <p class="nearby-category">{{ provider.category.name }}</p>
+                                <h3>{{ provider.name }}</h3>
+                            </div>
+                            {% if provider.is_verified %}<span class="verified">Verified</span>{% endif %}
+                        </div>
+                        <p class="nearby-address">{{ provider.address }}, {% if provider.neighborhood %}{{ provider.neighborhood }}, {% endif %}{{ provider.city }}, {{ provider.state }}</p>
+                        <p class="nearby-description">{{ provider.description|truncatewords:24 }}</p>
+                        <div class="nearby-actions">
+                            <a class="nearby-detail-link" href="{{ provider.get_absolute_url }}">View business</a>
+                            <a
+                                class="nearby-directions"
+                                href="https://www.google.com/maps/dir/?api=1{% if location_query %}&amp;origin={{ location_query|urlencode }}{% endif %}&amp;destination={{ provider.address|urlencode }}%2C%20{% if provider.neighborhood %}{{ provider.neighborhood|urlencode }}%2C%20{% endif %}{{ provider.city|urlencode }}%2C%20{{ provider.state|urlencode }}"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >Get directions</a>
+                        </div>
+                    </div>
+                </article>
+            {% empty %}
+                <div class="nearby-empty">
+                    <h3>No matching businesses found</h3>
+                    <p>Try a nearby neighborhood, city, or state, or use a broader business search.</p>
+                    <a href="{% url 'explore_services' %}">Browse all services</a>
+                </div>
+            {% endfor %}
+        </section>
+
+    </div>
+</section>
+{% endblock %}

@@ -172,7 +172,9 @@ body.admin-page {
 .admin-text-action { padding: 4px 0; border: 0; color: var(--admin-green-dark); background: transparent; font-size: 0.82rem; font-weight: 750; cursor: pointer; }
 .admin-text-action:hover { text-decoration: underline; }
 .admin-category-list { display: flex; flex-wrap: wrap; gap: 9px; }
-.admin-category { min-height: 39px; padding: 5px 7px 5px 12px; display: inline-flex; align-items: center; gap: 9px; border: 1px solid var(--admin-line); border-radius: 4px; color: var(--admin-ink); background: #f7f9f6; font-size: 0.86rem; font-weight: 700; }
+.admin-category { min-height: 48px; padding: 8px 7px 8px 12px; display: inline-flex; align-items: center; gap: 9px; border: 1px solid var(--admin-line); border-radius: 4px; color: var(--admin-ink); background: #f7f9f6; font-size: 0.86rem; font-weight: 700; }
+.admin-category-copy { min-width: 100px; display: grid; gap: 2px; }
+.admin-category-description { max-width: 220px; color: var(--admin-muted); font-size: 0.74rem; font-weight: 400; overflow-wrap: anywhere; }
 .admin-category-actions { display: inline-flex; align-items: center; gap: 3px; padding-left: 5px; border-left: 1px solid var(--admin-line); }
 .admin-icon-action { width: 27px; height: 27px; padding: 0; display: inline-grid; place-items: center; border: 0; border-radius: 3px; color: var(--admin-muted); background: transparent; font-size: 1rem; cursor: pointer; }
 .admin-icon-action:hover { color: var(--admin-green-dark); background: var(--admin-green-soft); }
