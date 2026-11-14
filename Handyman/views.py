@@ -15,11 +15,9 @@ def superuser_only(user):
 
 
 def home(request):
-	provider_count = ServiceProvider.objects.filter(status="approved").count()
 	return render(
 		request,
 		"Handyman/home.html",
-		{"provider_count": provider_count},
 	)
 
 
